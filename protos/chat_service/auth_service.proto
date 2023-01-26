@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package genproto;
+
+option go_package="genproto/chat_service";
+
+import "google/protobuf/empty.proto";
+
+service AuthService {
+    rpc Register(RegisterRequest) returns (google.protobuf.Empty) {}
+    rpc Verify(VerifyRegisterRequest) returns (AuthResponse) {}
+    rpc VerifyToken(VerifyTokenRequest) returns (AuthPayload) {}
+    rpc Login(LoginRequest) returns (AuthResponse) {}
+}
+
+message RegisterRequest {
+    string first_name = 1;
+    string last_name = 2;
+    string email = 3;
+    string password = 4;
+}
+
+message VerifyRegisterRequest {
+    string email = 1;
+    string code = 2;
+}
+
+message AuthResponse {
+    int64 id = 1;
+	string first_name = 2;
+	string last_name = 3;
+	string email = 4;
+	string username = 5;
+	string type = 6;
+	string created_at = 7;
+	string access_token = 8;
+}
+
+message VerifyTokenRequest {
+    string access_token = 1;
+    string resource = 2;
+    string action = 3;
+}
+
+message AuthPayload {
+    string id = 1;
+	int64 user_id = 2;
+	string email = 3;
+	string user_type = 4;
+	string issued_at = 5;
+    string expired_at = 6;
+    bool has_permission = 7;
+}
+
+message LoginRequest {
+    string email    = 1;
+    string password =  2;
+}
+
+

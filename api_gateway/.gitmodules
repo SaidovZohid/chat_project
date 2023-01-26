@@ -1,0 +1,3 @@
+[submodule "protos"]
+	path = protos
+	url = git@gitlab.com:telegram_clone/protos.git

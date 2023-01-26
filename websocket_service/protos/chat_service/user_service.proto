@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package genproto;
+
+option go_package="genproto/chat_service";
+
+import "user.proto";
+import "google/protobuf/empty.proto";
+
+service UserService {
+    rpc Create(User) returns (User) {}
+    rpc Get(GetUserRequest) returns (User) {}
+    rpc GetAll(GetAllUsersRequest) returns (GetAllUsersResponse) {}
+    rpc Update(User) returns (User) {}
+    rpc Delete(GetUserRequest) returns (google.protobuf.Empty) {}
+    rpc SetUserImage(SetUserImageRequest) returns (User) {}
+    rpc GetByEmail(GetByEmailRequest) returns (User) {}
+}

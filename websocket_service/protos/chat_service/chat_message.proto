@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package genproto;
+
+import "chat.proto";
+option go_package="genproto/chat_service";
+
+message ChatMessage {
+    int64 id = 1;
+    string message = 2;
+    int64 user_id = 3;
+    // GetUserInfo message in private_chat proto file
+    GetUserInfo user_info = 4;
+    int64 chat_id = 5;
+    string created_at = 6;
+}
+
+message GetAllMessagesParams {
+    int64 limit = 1;
+    int64 page = 2;
+    int64 chat_id = 3;
+}
+
+message GetAllMessages {
+    repeated ChatMessage messages = 1;
+    int64 count = 2;
+}

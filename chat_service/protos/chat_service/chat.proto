@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package genproto;
+
+option go_package="genproto/chat_service";
+
+message Chat {
+    int64 id = 1;
+    string name = 2;
+    int64 user_id = 3;
+    GetUserInfo user_info = 4;
+    string chat_type = 5;
+    string image_url = 6;
+}
+
+message CreateChatReq {
+    string name = 1;
+    int64 user_id = 2;
+    string chat_type = 3;
+    string image_url = 4;
+    repeated int64 members = 5;
+}
+
+message IdRequest {
+    int64 id = 1;
+}
+
+message GetUserInfo {
+    string first_name = 1;
+    string last_name = 2;
+    string email = 3;
+    string username = 4;
+    string image_url = 5;
+    string created_at = 6;
+}
+
+message GetAllChatsParams {
+    int64 limit = 1;
+    int64 page = 2;
+    int64 user_id = 3;
+}
+
+message GetAllChatsRes {
+    repeated Chat chats = 1;
+    int64 count = 2;
+}
+
+message ChatIdRequest {
+    int64 id = 1;
+    int64 user_id = 2;
+}
+
+
+message AddMemberRequest {
+    int64 chat_id = 1;
+    int64 user_id = 2;
+}
+
+message RemoveMemberRequest {
+    int64 chat_id = 1;
+    int64 user_id = 2;
+}
+
+
+message GetChatMembersParams {
+    int64 limit = 1;
+    int64 page = 2;
+    int64 chat_id = 3;
+}

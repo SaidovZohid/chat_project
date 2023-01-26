@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package genproto;
+
+option go_package="genproto/chat_service";
+
+message User {
+    int64 id = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string email = 4;
+    string password = 5;
+    string username = 6;
+    string profile_image_url = 7;
+    string type = 8;
+    string created_at = 9;
+}
+
+message IdRequest {
+    int64 id = 1;
+}
+
+message GetAllUsersRequest {
+    int32 limit = 1;
+    int32 page = 2;
+    string search = 3;
+}
+
+message GetAllUsersResponse {
+    repeated User users = 1;
+    int32 count = 2;
+}
+
+message GetByEmailRequest {
+    string email = 1;
+}

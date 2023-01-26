@@ -1,0 +1,8 @@
+.env
+.env.docker
+vendor/
+
+.DS_Store
+.vscode/
+
+media/
